@@ -102,8 +102,15 @@ app.post("/", function(req,res) {
     //         }
     //     })
     // }
-    item.save();
-    res.redirect('/');
+
+    item.save(function(err) {
+        if (!err){
+            res.redirect('/');
+        }else {
+            console.log(err);
+        }
+    })
+    
 })
 
 app.post('/delete', function (req,res) {
